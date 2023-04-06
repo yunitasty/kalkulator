@@ -23,9 +23,6 @@ numbers.forEach((number) =>{
     })
 })
 
-
-
-
 const operators = document.querySelectorAll('.operator')
 
 const inputOperator = (operator) => {
@@ -40,8 +37,6 @@ operators.forEach((operator) => {
         updateScreen(event.target.value)
     })
 })
-
-
 
 const calculate = () => {
     let result = ''
