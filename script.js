@@ -23,7 +23,13 @@ numbers.forEach((number) =>{
     })
 })
 
-const operators = document.querySelectorAll('.operator')
+const operators = document.querySelectorAll(".operator")
+
+operators.forEach((operator) => {
+    operator.addEventListener("click",(event) => {
+        inputOperator(event.target.value)
+    })
+})
 
 const inputOperator = (operator) => {
     if (calculationOperator === '') {
@@ -32,39 +38,36 @@ const inputOperator = (operator) => {
     calculationOperator = operator
     currentNumber= ''
 }
-operators.forEach((operator) => {
-    operator.addEventListener("click",(event) => {
-        updateScreen(event.target.value)
-    })
-})
-
-const calculate = () => {
-    let result = ''
-    switch(calculationOperator) {
-        case '+':
-            result = parseFloat(prevNumber) + parseFloat(currentNumber)
-            break
-        case '-':
-            result = parseFloat(prevNumber) - parseFloat(currentNumber)
-            break 
-        case '*':
-            result = parseFloat(prevNumber) * parseFloat(currentNumber)
-            break    
-        case '/':
-            result = parseFloat(prevNumber) / parseFloat(currentNumber)
-            break
-        default:
-            break                      
-    }
-    currentNumber = result
-    calculationOperator = ''
-}
 
 const equalSign = document.querySelector('.equal-sign')
 equalSign.addEventListener("click", () => {
     calculate()
     updateScreen(currentNumber)
 })
+
+
+const calculate = () => {
+    let result = "" 
+    switch(calculationOperator) {
+        case "+":
+            result = parseFloat(prevNumber) + parseFloat(currentNumber);
+            break;
+        case "-":
+            result = parseFloat(prevNumber) - parseFloat(currentNumber);
+            break;
+        case "*":
+            result = parseFloat(prevNumber) * parseFloat(currentNumber);
+            break;  
+        case "/":
+            result = parseFloat(prevNumber) / parseFloat(currentNumber);
+            break;
+        default:
+            break;                    
+    }
+    currentNumber = result
+    calculationOperator = ''
+}
+
 
 const clearBtn = document.querySelector('.all-clear')
 const clearAll = () => {
